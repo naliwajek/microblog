@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
   end
 
   def index
-    render :index, locals: { messages: current_user.messages }
+    render :index, 
+      locals: { messages: current_user.messages.desc }
   end
 end
