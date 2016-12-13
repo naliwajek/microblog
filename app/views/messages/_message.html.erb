@@ -3,5 +3,8 @@
   <span class="content"><%= message.content %></span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(message.created_at) %> ago.
+    <% if message.user == current_user %>
+      <%= link_to "Delete", message_path(message), method: :delete, class: "btn btn-xs btn-danger remove_fields" %>
+    <% end %>
   </span>
 </li>

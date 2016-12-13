@@ -10,6 +10,11 @@ class MessagesController < ApplicationController
   end
 
   def destroy
+    current_user.messages.find(params[:id]).destroy
+
+    flash[:success] = 'Message destroyed successfully!'
+
+    redirect_to root_url
   end
 
   def index
