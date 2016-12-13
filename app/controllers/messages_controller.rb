@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
 
   def index
     render :index, locals: {
-      messages: current_user.messages.desc,
+      messages: Message.stream_for(current_user),
       new_message: current_user.messages.build
     }
   end

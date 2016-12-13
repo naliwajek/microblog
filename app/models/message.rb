@@ -5,4 +5,5 @@ class Message < ApplicationRecord
   belongs_to :user
 
   scope :desc, -> { order(created_at: :desc) }
+  scope :stream_for, -> (user) { where(user: [user] + user.following).desc }
 end

@@ -7,5 +7,10 @@ RSpec.describe User, type: :model do
 
   describe 'relations' do
     it { is_expected.to have_many(:messages).dependent(:destroy) }
+    it { is_expected.to have_many(:active_relationships)
+      .class_name('Relationship')
+      .with_foreign_key('follower_id')
+      .dependent(:destroy) 
+    }
   end
 end
