@@ -1,4 +1,4 @@
-# Blogging Service Brief
+# Blogging Service
 
 ## Vision
 
@@ -7,6 +7,42 @@ We've had a new idea for a blogging service. Users can post messages of up to 15
 Users will eventually be able to **follow** other users and are in turn able to be **followed** themselves.
 
 We believe this to be a very unique and exciting idea.
+
+## Installation
+
+Install all gems:
+
+```
+bundle install
+```
+
+`sqlite3` is used as a database so there should be no need for any further database setup, just run:
+
+```
+bundle exec rake db:setup
+```
+
+As no user authentication is required for a demo of a timeline, current user is always the first user created in database. Logic for that is handled in `lib/demo/current_user.rb` module and included in `ApplicationController`.
+
+To run server execute:
+
+```
+bundle exec rails server
+```
+
+## Running tests
+
+You can make sure all tests are passing by running:
+
+```
+bundle exec rspec spec/
+```
+
+To run `guard` (with `rubocop` watcher) execute:
+
+```
+bundle exec guard
+```
 
 ## Build a Prototype
 
