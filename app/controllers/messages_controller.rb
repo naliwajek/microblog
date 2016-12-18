@@ -3,10 +3,14 @@ class MessagesController < ApplicationController
     message = current_user.messages.build(message_params)
 
     if message.save
-      flash[:success] = 'Thanks! Messages was posted to your feed!'
+      flash[:success] = 'Thanks! Message was posted to your feed!'
+      redirect_to root_url
+    else
+      render :index, locals: {
+        messages: web_ready_messages,
+        new_message: message
+      }
     end
-
-    redirect_to root_url
   end
 
   def destroy
@@ -19,7 +23,7 @@ class MessagesController < ApplicationController
 
   def index
     render :index, locals: {
-      messages: Message.stream_for(current_user),
+      messages: web_ready_messages,
       new_message: current_user.messages.build
     }
   end
@@ -28,5 +32,11 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:content)
+  end
+
+  def web_ready_messages
+    Message.stream_for(current_user).map do |msg|
+      WebMessage.new(msg)
+    end
   end
 end
