@@ -4,7 +4,6 @@
 
 module Demo
   module CurrentUser
-
     # Because demo does not require aunthentication,
     # the first user is used everywhere as a currently
     # logged in user - to be replacted by Devise#current_user

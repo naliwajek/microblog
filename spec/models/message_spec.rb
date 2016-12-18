@@ -23,7 +23,7 @@ RSpec.describe Message, type: :model do
     end
 
     describe '#stream_for' do
-     it 'returns user messages combined with messages of followed people' do
+      it 'returns user messages combined with messages of followed people' do
         user1 = User.create!(name: 'John The First')
         user2 = User.create!(name: 'John The Second')
         user3 = User.create!(name: 'John The Third')

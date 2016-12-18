@@ -5,8 +5,8 @@
 module Demo
   class Seeds
     def self.run
-      demo_current_user = User.create!(name: "John Doe")
-      followed_by_current_user = User.create!(name: "Johny Ive")
+      demo_current_user = User.create!(name: 'John Doe')
+      followed_by_current_user = User.create!(name: 'Johny Ive')
 
       # John with follow Johny
       Relationship.create(
@@ -15,12 +15,12 @@ module Demo
       )
 
       Message.create!(
-        content: "Hello, this is my first message ever!",
+        content: 'Hello, this is my first message ever!',
         user: demo_current_user
       )
 
       Message.create!(
-        content: "I think all those dongles look wonderful!",
+        content: 'I think all those dongles look wonderful!',
         user: followed_by_current_user
       )
 

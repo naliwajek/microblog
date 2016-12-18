@@ -10,30 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161213120546) do
-
-  create_table "messages", force: :cascade do |t|
-    t.text     "content"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_messages_on_user_id"
+ActiveRecord::Schema.define(version: 20_161_213_120_546) do
+  create_table 'messages', force: :cascade do |t|
+    t.text     'content'
+    t.integer  'user_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['user_id'], name: 'index_messages_on_user_id'
   end
 
-  create_table "relationships", force: :cascade do |t|
-    t.integer  "follower_id"
-    t.integer  "followed_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["followed_id"], name: "index_relationships_on_followed_id"
-    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  create_table 'relationships', force: :cascade do |t|
+    t.integer  'follower_id'
+    t.integer  'followed_id'
+    t.datetime 'created_at',  null: false
+    t.datetime 'updated_at',  null: false
+    t.index ['followed_id'], name: 'index_relationships_on_followed_id'
+    t.index %w(follower_id followed_id), name: 'index_relationships_on_follower_id_and_followed_id', unique: true
+    t.index ['follower_id'], name: 'index_relationships_on_follower_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'users', force: :cascade do |t|
+    t.string   'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
-
 end
